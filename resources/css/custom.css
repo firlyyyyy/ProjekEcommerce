@@ -1,0 +1,9 @@
+.swal-custom-width {
+    width: 400px !important; /* Lebar yang sedang, tidak terlalu besar */
+    max-width: 90% !important; /* Batas lebar maksimal 90% dari layar */
+    padding: 16px 24px !important; /* Padding yang lebih nyaman */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1) !important; /* Bayangan lembut */
+    border-radius: 12px !important; /* Sudut yang lebih bulat dan halus */
+    background-color: #e3f2fd !important; /* Warna latar biru muda yang lembut */
+    border: 1px solid #c5d9e1 !important; /* Border biru muda yang lembut */
+}

@@ -4,8 +4,77 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "071932fc77f95477cb014ca9c6d9152d",
+    "content-hash": "bb6d0b36dd8c707719a930b780197d05",
     "packages": [
+        {
+            "name": "akaunting/laravel-money",
+            "version": "5.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akaunting/laravel-money.git",
+                "reference": "d99a9e8e576cac40668d0a5afaf7ea153590aff9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akaunting/laravel-money/zipball/d99a9e8e576cac40668d0a5afaf7ea153590aff9",
+                "reference": "d99a9e8e576cac40668d0a5afaf7ea153590aff9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.0|^10.0|^11.0",
+                "illuminate/support": "^9.0|^10.0|^11.0",
+                "illuminate/validation": "^9.0|^10.0|^11.0",
+                "illuminate/view": "^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "vlucas/phpdotenv": "^5.4.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.4|^8.0|^9.0",
+                "phpunit/phpunit": "^9.5|^10.0|^11.0",
+                "vimeo/psalm": "^4.23|^5.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Akaunting\\Money\\Provider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Akaunting\\Money\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Denis Duliçi",
+                    "email": "info@akaunting.com",
+                    "homepage": "https://akaunting.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Currency formatting and conversion package for Laravel",
+            "keywords": [
+                "convert",
+                "currency",
+                "format",
+                "laravel",
+                "money"
+            ],
+            "support": {
+                "issues": "https://github.com/akaunting/laravel-money/issues",
+                "source": "https://github.com/akaunting/laravel-money/tree/5.2.2"
+            },
+            "time": "2024-09-25T10:06:11+00:00"
+        },
         {
             "name": "anourvalar/eloquent-serialize",
             "version": "1.2.25",
@@ -71,6 +140,86 @@
                 "source": "https://github.com/AnourValar/eloquent-serialize/tree/1.2.25"
             },
             "time": "2024-09-16T12:59:37+00:00"
+        },
+        {
+            "name": "ariaieboy/filament-currency",
+            "version": "1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ariaieboy/filament-currency.git",
+                "reference": "0c002261f7f165e0bf4417d6c48aab2fb0aa4557"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ariaieboy/filament-currency/zipball/0c002261f7f165e0bf4417d6c48aab2fb0aa4557",
+                "reference": "0c002261f7f165e0bf4417d6c48aab2fb0aa4557",
+                "shasum": ""
+            },
+            "require": {
+                "akaunting/laravel-money": "^1.2|^2.0|^3.0|^4.0|^5.2",
+                "filament/tables": "^3.0",
+                "illuminate/contracts": "^10.0|^11",
+                "php": "~8.1|~8.2|~8.3|~8.4",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.7.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ariaieboy\\FilamentCurrency\\FilamentCurrencyServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentCurrency": "Ariaieboy\\FilamentCurrency\\Facades\\FilamentCurrency"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ariaieboy\\FilamentCurrency\\": "src/",
+                    "Ariaieboy\\FilamentCurrency\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AriaieBOY",
+                    "email": "ariaieboy.ir@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Bring back laravel-money formatter for Filament Text Column",
+            "homepage": "https://github.com/ariaieboy/filament-currency",
+            "keywords": [
+                "ariaieboy",
+                "filament-currency",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ariaieboy/filament-currency/issues",
+                "source": "https://github.com/ariaieboy/filament-currency"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ariaieboy",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-11-03T15:24:06+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -1961,6 +2110,130 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "hasnayeen/blade-eva-icons",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Hasnayeen/blade-eva-icons.git",
+                "reference": "2cf2fa6d90c789c63bc1046e857f1032fa7a5e96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Hasnayeen/blade-eva-icons/zipball/2cf2fa6d90c789c63bc1046e857f1032fa7a5e96",
+                "reference": "2cf2fa6d90c789c63bc1046e857f1032fa7a5e96",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^10.0|^11.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "orchestra/testbench": "^8.0|^9.0",
+                "phpunit/phpunit": "^10.5|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hasnayeen\\Evaicons\\BladeEvaiconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hasnayeen\\Evaicons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nehal Hasnayeen",
+                    "email": "hasnayeen@pm.me",
+                    "homepage": "https://hasnayeen.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of Eva Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/Hasnayeen/blade-eva-icons",
+            "keywords": [
+                "Eva icons",
+                "blade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/Hasnayeen/blade-eva-icons/issues",
+                "source": "https://github.com/Hasnayeen/blade-eva-icons/tree/v2.0.0"
+            },
+            "time": "2024-05-28T13:18:32+00:00"
+        },
+        {
+            "name": "jantinnerezo/livewire-alert",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jantinnerezo/livewire-alert.git",
+                "reference": "24281639258daf80fe0a585f55b7490a88fd68ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jantinnerezo/livewire-alert/zipball/24281639258daf80fe0a585f55b7490a88fd68ef",
+                "reference": "24281639258daf80fe0a585f55b7490a88fd68ef",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0|^11.0",
+                "livewire/livewire": "^3.0",
+                "php": "^8.1|^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.15|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.5|^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jantinnerezo\\LivewireAlert\\LivewireAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "LivewireAlert": "Jantinnerezo\\LivewireAlert\\LivewireAlertFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jantinnerezo\\LivewireAlert\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jantinn Erezo",
+                    "email": "erezojantinn@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package provides a simple alert utilities for your livewire components.",
+            "homepage": "https://github.com/jantinnerezo/livewire-alert",
+            "keywords": [
+                "jantinnerezo",
+                "livewire-alert"
+            ],
+            "support": {
+                "issues": "https://github.com/jantinnerezo/livewire-alert/issues",
+                "source": "https://github.com/jantinnerezo/livewire-alert/tree/v3.0.2"
+            },
+            "time": "2024-03-10T10:47:39+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -4888,6 +5161,65 @@
                 }
             ],
             "time": "2024-08-27T18:56:10+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v16.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/813ae4961755af28a13bda451689f7a6ed6498cb",
+                "reference": "813ae4961755af28a13bda451689f7a6ed6498cb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "3.5.0",
+                "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "support": {
+                "issues": "https://github.com/stripe/stripe-php/issues",
+                "source": "https://github.com/stripe/stripe-php/tree/v16.2.0"
+            },
+            "time": "2024-10-29T21:15:53+00:00"
         },
         {
             "name": "symfony/clock",

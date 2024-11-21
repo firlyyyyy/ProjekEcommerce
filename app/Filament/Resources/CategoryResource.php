@@ -12,49 +12,58 @@ use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CategoryResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationLabel = 'Categories';
+    protected static ?string $navigationGroup = 'Product';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make([
-                    Grid::make()
-                        ->schema([
-                            TextInput::make('name')
-                                ->required()
-                                ->maxLength(255)
-                                ->live(onBlur: true)
-                                ->afterStateUpdated(fn(string $operation, $state, Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                Section::make('Category Details')
+                    ->description('Fill in the details for the category.')
+                    ->schema([
+                        Grid::make(2) // Using a 2-column grid for better layout
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label('Category Name')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->placeholder('Enter category name')
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(fn($state, Set $set) => $set('slug', Str::slug($state)))
+                                    ->helperText('The name of the category'),
 
-                            TextInput::make('slug')
-                                ->maxLength(255)
-                                ->disabled()
-                                ->required()
-                                ->dehydrated()
-                                ->unique(Category::class, 'slug', ignoreRecord: true),
-                        ]),
+                                TextInput::make('slug')
+                                    ->label('Slug')
+                                    ->maxLength(255)
+                                    ->disabled()
+                                    ->placeholder('Generated automatically')
+                                    ->unique(Category::class, 'slug', ignoreRecord: true)
+                                    ->helperText('This is auto-generated based on the name'),
+                            ]),
 
-                    FileUpload::make('image')
-                        ->image()
-                        ->directory('categories'),
+                        FileUpload::make('image')
+                            ->label('Category Image')
+                            ->image()
+                            ->directory('categories')
+                            ->helperText('Upload an image representing the category.'),
 
-                    Toggle::make('is_active')
-                        ->required()
-                        ->default(true),
-                ])
+                        Toggle::make('is_active')
+                            ->label('Active Status')
+                            ->default(true)
+                            ->helperText('Toggle to activate or deactivate this category'),
+                    ])
+                    ->columns(1), // Displaying in a single-column section
             ]);
     }
 
@@ -63,48 +72,63 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Name')
+                    ->searchable()
+                    ->alignCenter(),
 
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Image')
+                    ->alignCenter(),
 
                 Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
+                    ->label('Slug')
+                    ->searchable()
+                    ->alignCenter(),
 
-                Tables\Columns\TextColumn::make('is_active')
-                    ->searchable(),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label('Is Active')
+                    ->alignment('center')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->trueColor('success')
+                    ->falseColor('danger'),
 
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created At')
                     ->dateTime()
+                    ->alignCenter()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Updated At')
                     ->dateTime()
+                    ->alignCenter()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('is_active')
+                    ->label('Active')
+                    ->query(fn(Builder $query) => $query->where('is_active', true)),
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\ViewAction::make()
+                    Tables\Actions\EditAction::make()->label('Edit'),
+                    Tables\Actions\DeleteAction::make()->label('Delete'),
+                    Tables\Actions\ViewAction::make()->label('View'),
                 ]),
+
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make()->label('Delete Selected'),
             ]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

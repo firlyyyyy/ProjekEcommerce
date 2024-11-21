@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -17,11 +18,13 @@ class Product extends Model
         'is_active',
         'is_featured',
         'is_stock',
-        'on_sale'
+        'on_sale',
+        'created_at',
+        'updated_at'
     ];
 
     protected $casts = [
-        'image' => 'array'
+        'images' => 'array'
     ];
 
     public function category()
@@ -37,5 +40,20 @@ class Product extends Model
     public function orderItem()
     {
         return $this->hasMany(orderItem::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($product) {
+            $product->slug = Str::slug($product->name);
+        });
+
+        static::updating(function ($product) {
+            if ($product->isDirty('name')) {
+                $product->slug = Str::slug($product->name);
+            }
+        });
     }
 }

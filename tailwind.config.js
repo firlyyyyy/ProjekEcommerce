@@ -8,13 +8,20 @@ export default {
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
+        'node_modules/preline/dist/*.js'
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                primary: '#FF5733',
+            }
         },
     },
-    plugins: [],
+    plugins: [
+        require('preline/plugin'),
+    ],
 };
